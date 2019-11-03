@@ -15,3 +15,5 @@ name: "Hannah Montana"
 id: 4,
 name: "John Danger"
 }]
+
+export default users;

@@ -1,4 +1,4 @@
-const rooms = rooms: [
+const rooms = [
 {
 number: 1,
 roomType: "residential suite",
@@ -55,3 +55,5 @@ bedSize: "queen",
 numBeds: 2,
 costPerNight: 231.46
 }];
+
+export default rooms;
