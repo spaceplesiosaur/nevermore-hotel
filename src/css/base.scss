@@ -1,5 +1,10 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+@import '/_variables.scss';
+@import '/_login.scss';
+@import '/_user.scss';
+@import '/_manager.scss';
+@import '/_booking.scss';
+
+$primary-background: #292929;
 
 body {
   background-color: $primary-background;
