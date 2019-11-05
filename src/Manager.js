@@ -1,8 +1,9 @@
 import User from "./User";
+import Roombooker from "./Rooms";
 
-class Manager extends User {
-  constructor(userData, bookings, username) {
-    super(userData, bookings, username);
+class Manager extends Roombooker {
+  constructor(userData, bookings, roomList, username) {
+    super(userData, bookings, roomList, username);
     this.userID = null;
   }
   getNumberOpenRoomsByDate(date, roomList) {

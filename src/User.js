@@ -1,7 +1,8 @@
 class User {
-  constructor(userData, bookings, username) {
+  constructor(userData, bookings, roomList, username) {
     this.userData = userData;
     this.bookings = bookings;
+    this.roomList = roomList;
     this.userID = parseInt(username.slice(8));
   }
   getUserInfoFromId(id) {
@@ -14,7 +15,8 @@ class User {
       return booking.userID === id;
     });
   }
-  getRevenueById(id, roomList) {
+  getRevenueById(id) {
+    let roomList = this.roomList;
     return this.getBookingsById(id).reduce(function(sumSoFar, booking) {
       return sumSoFar += roomList.find(room => {
         return room.number === booking.roomNumber;

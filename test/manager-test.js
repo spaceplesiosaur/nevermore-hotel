@@ -15,7 +15,7 @@ describe('Manager', function() {
 
   beforeEach(() => {
 
-  manager1 = new Manager(users, bookings, 'manager');
+  manager1 = new Manager(users, bookings, rooms, 'manager');
 
 });
 

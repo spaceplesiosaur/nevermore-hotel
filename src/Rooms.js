@@ -1,7 +1,8 @@
-class Rooms {
-  constructor(bookings, roomList) {
-    this.bookings = bookings;
-    this.roomList = roomList;
+import User from "./User";
+
+class Roombooker extends User {
+  constructor(userData, bookings, roomList, username) {
+    super(userData, bookings, roomList, username)
     this.roomBook = {};
   }
   findBookingsByDate(date) {
@@ -72,4 +73,4 @@ class Rooms {
   }
 }
 
-export default Rooms;
+export default Roombooker;

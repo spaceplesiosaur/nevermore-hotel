@@ -1,11 +1,11 @@
 import chai from 'chai';
 const expect = chai.expect;
 import spies from "chai-spies";
-// import users from '../data/user-test-data';
+import users from '../data/user-test-data';
 import bookings from '../data/bookings-test-data';
 import rooms from '../data/rooms-test-data';
 
-import Rooms from '../src/Rooms';
+import Roombooker from '../src/Rooms';
 
 chai.use(spies);
 
@@ -15,7 +15,7 @@ describe('Rooms', function() {
 
   beforeEach(() => {
 
-  rooms1 = new Rooms(bookings, rooms);
+  rooms1 = new Roombooker(users, bookings, rooms, 'customer1');
 
 });
   it('should find bookings by date', function() {

@@ -18,10 +18,10 @@ describe('User', function() {
 
   beforeEach(() => {
 
-  user1 = new User(users, bookings, 'customer1');
-  user2 = new User(users, bookings, 'customer2');
-  user3 = new User(users, bookings, 'customer3');
-  user4 = new User(users, bookings, 'customer4');
+  user1 = new User(users, bookings, rooms, 'customer1');
+  user2 = new User(users, bookings, rooms, 'customer2');
+  user3 = new User(users, bookings, rooms, 'customer3');
+  user4 = new User(users, bookings, rooms, 'customer4');
 
 });
 
@@ -79,7 +79,7 @@ describe('User', function() {
         }]
     }
   )
-    expect(user4.getRevenueById(user4.userID, rooms)).to.equal(769.61);
+    expect(user4.getRevenueById(user4.userID)).to.equal(769.61);
   });
   // it('should find bookings by date', function() {
   //   expect(user1.findBookingsByDate("2019/11/06")).to.eql([
