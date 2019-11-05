@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <title>Nevermore Hotel Booking</title>
-  </head>
-  <body>
-    <header>
-      <!-- <img class="logo-image" src="./images/raven-logo-2.jpg" alt="raven logo"> -->
-      <h1>The Nevermore Hotel</h1>
-    </header>
-    <main>
-    <section class="welcome-screen hidden">
+
+<head>
+  <title>Nevermore Hotel Booking</title>
+</head>
+
+<body>
+  <header>
+    <!-- <img class="logo-image" src="./images/raven-logo-2.jpg" alt="raven logo"> -->
+    <h1>The Nevermore Hotel</h1>
+  </header>
+  <main>
+    <section class="welcome-screen" id="loginPage">
       <section class="welcome-section-signIn">
         <h2 class="signIn-header-welcome">Welcome!</h2>
         <section class="signIn-form-labelInput">
@@ -23,7 +25,7 @@
         <button class="signIn-form-logInButton" id="logInButton">Log In</button>
       </section>
     </section>
-    <section class="manager-page">
+    <section class="manager-page hidden" id="managerPage">
       <section class="sidebar">
         <p class="manager-sidebar-text">Hello, Manager!</p>
         <div class="divider"></div>
@@ -34,61 +36,86 @@
         <div class="divider"></div>
         <button class="manager-form-logInButton">Bookings</button>
       </section>
-      <img class="centerpiece-image" src="/images/disco-gardens.png" alt="gazebo at night with lights"></img>
+      <img class="centerpiece-image hidden" src="/images/disco-gardens.png" alt="gazebo at night with lights"></img>
       <section class="manager-booking-lightbox">
         <section class="lightbox-searchUser-form">
-          <label for="userSearch" type="text"></label>
           <section class="button-label-box">
-          <input class="signIn-form-input" name="userSearch"></input>
-          <button class="form-button">Search</button>
-        </section>
-        <section class=user-booking-info>
-          <p>User Name</p>
-          <ul>
-            <li>
-              <button class="cancel-button">Cancel</button>
-              <p>Booking List Item</p>
-            </li>
-          </ul>
-          <button class="form-button">Add Booking</button>
-          <p>Total Spent:</p>
-        </section>
+            <label for="userSearch">Search by user id</label>
+            <input class="signIn-form-input" name="userSearch" type="text"></input>
+            <button class="form-button">Search</button>
+          </section>
+          <section class="user-booking-info">
+            <div class="divider"></div>
+            <p class="booking-info-text">User Name</p>
+            <ul class="booking-info-list">
+              <li class="booking-info-listItem">
+                <button class="cancel-button">Cancel</button>
+                <p class="booking-info-text">Booking List Item</p>
+              </li>
+            </ul>
+            <button class="form-button">Add Booking</button>
+            <p class="booking-info-text">Total Spent:</p>
+          </section>
         </section>
       </section>
     </section>
-    <section class="user-page hidden">
+    <section class="user-page hidden" id="userPage">
       <section class="sidebar">
-        <p class="user-sidebar-date">1986/08/22
-        </p>
-        <section class="user-sidebar-bookings">
-          <p>Total Bookings</p>
-          <ul>
-            <li>Booking</li>
-          </ul>
-        </section>
-        <p class="user-sidebar-total">
-          $400.00
-        </p>
-      </section>
-      <button class="user-sidebar-bookings">Book A Room
-      </button>
-    </section>
-    <section class="booking-page hidden">
-      <section class="booking-form-date">
-        <label for="booking-date" class="label" tabindex="0">Username:</label>
-        <input id="date-input" type="text" name="booking-date" tabindex="0">
-        <button class="form-button">Find Rooms</button>
-      </section>
-      <section class="booking-form-roomList">
-        <p>I want rooms with</p>
-        <ul>
-          <li>
-
+        <p class="manager-sidebar-text">Hello, User!</p>
+        <p class="manager-sidebar-date">Date: 1986/08/22</p>
+        <div class="divider"></div>
+        <p class="manager-sidebar-date">Your bookings:</p>
+        <ul class="booking-user-list">
+          <li class="booking-info-listItem">
+            <button class="cancel-button">Cancel</button>
+            <p class="booking-info-text">Booking List Item</p>
           </li>
         </ul>
-        <button class="form-button">Filter Rooms</button>
+        <div class="divider"></div>
+        <p class="booking-info-text">Total Spent:</p>
+        <div class="divider"></div>
+        <button class="form-button">Book A Room</button>
       </section>
+      <img class="centerpiece-image" src="/images/disco-pool.png" alt="gazebo at night with lights"></img>
     </section>
+
+
+    <section class="booking-page hidden">
+      <section class="column1-picture">
+        <img class="side-image" src="/images/disco-pool.png" alt="gazebo at night with lights"></img>
+      </section>
+      <section class="column2-booking-form">
+        <section class="booking-label-box">
+          <label for="book-date" class="label" tabindex="0">Date:</label>
+          <input id="book-date" type="date" name="book-date" tabindex="0">
+        </section>
+        <section class="booking-label-box">
+          <label for="book-user" class="label" tabindex="0">Username:</label>
+          <input id="book-user" type="text" name="book-user" tabindex="0">
+          <button class="form-button">Find Rooms</button>
+        </section>
+        <section class="booking-form-roomList">
+          <p>I want rooms with</p>
+          <ul>
+            <li>
+              <input type="checkbox">yes</input>
+            </li>
+            <li>
+              <input type="checkbox">yes</input>
+            </li>
+            <li>
+              <input type="checkbox">yes</input>
+            </li>
+          </ul>
+          <button class="form-button">Filter Rooms</button>
+        </section>
+      </section>
+
+    <section class="column3-picture">
+      <img class="side-image" src="/images/disco-pool.png" alt="gazebo at night with lights"></img>
+    </section>
+  </section>
   </main>
-  </body>
+</body>
+
 </html>
