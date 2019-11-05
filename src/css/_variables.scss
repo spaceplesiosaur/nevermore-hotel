@@ -1,0 +1,39 @@
+$primary-background: #292929;
+$pop-color-login: #C84865;
+$pop-color-manager: #8F2AFB;
+
+
+
+@mixin headers($font-size) {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-style: italic;
+  font-size: $font-size;
+  font-weight: bold;
+  color: white;
+}
+
+@mixin buttons($button-color, $width, $font-color) {
+  margin: 2em 0 2em 0;
+  padding: $width;
+  border-radius: 5px;
+  background-color: $button-color;
+  color: $font-color;
+  font-size: 1.5em;
+}
+
+@mixin sidebar($border-color) {
+  float: left;
+  background-color: white;
+  width: 17%;
+  border-radius: 5px;
+  border: 3px solid $border-color;
+  margin: 0 0 0 1em;
+}
+@mixin sideBarText($font-size) {
+  color: $primary-background;
+  font-size: $font-size;
+  font-family: sans-serif;
+  margin: 1em 0 1em 0;
+}

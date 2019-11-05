@@ -4,8 +4,26 @@
 @import '/_manager.scss';
 @import '/_booking.scss';
 
-$primary-background: #292929;
+
 
 body {
   background-color: $primary-background;
+}
+
+main {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+header {
+  @include headers(3em);
+}
+
+.logo-image {
+  background-color: hsla(0, 0, 0, 0);
+  height: 3em;
+  width: 3em;
 }

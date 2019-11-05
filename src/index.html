@@ -5,17 +5,18 @@
   </head>
   <body>
     <header>
+      <!-- <img class="logo-image" src="./images/raven-logo-2.jpg" alt="raven logo"> -->
       <h1>The Nevermore Hotel</h1>
-      <img src="./images/raven-logo-2.jpg" alt="turing logo" height="100px" width="100px">
     </header>
-    <section class="welcome-screen">
+    <main>
+    <section class="welcome-screen hidden">
       <section class="welcome-section-signIn">
         <h2 class="signIn-header-welcome">Welcome!</h2>
-        <section class="signIn-form-username">
+        <section class="signIn-form-labelInput">
           <label for="username" class="label" tabindex="0">Username:</label>
           <input id="username-input" type="text" name="username" tabindex="0">
         </section>
-        <section class="signIn-form-password">
+        <section class="signIn-form-labelInput">
           <label for="password" class="label" tabindex="0">Password:</label>
           <input class="signIn-form-input" id="password-input" type="password" name="password" tabindex="0">
         </section>
@@ -24,18 +25,16 @@
     </section>
     <section class="manager-page">
       <section class="sidebar">
-        <p class="manager-sidebar-date">1986/08/22
-        </p>
-        <section class="manager-sidebar-rooms">
-          <p>Total Rooms Booked</p>
-          <p>% Occupied</p>
-        </section>
-        <p class="manager-sidebar-revenue">
-          $4000.00
-        </p>
-        <button class="manager-sidebar-bookings">Bookings
-        </button>
+        <p class="manager-sidebar-text">Hello, Manager!</p>
+        <div class="divider"></div>
+        <p class="manager-sidebar-date">Date: 1986/08/22</p>
+        <p class="manager-sidebar-rooms">Total Rooms Booked:</p>
+        <p class="manager-sidebar-rooms">% Occupied:</p>
+        <p class="manager-sidebar-revenue">Today's revenue: $4000.00</p>
+        <div class="divider"></div>
+        <button class="manager-form-logInButton">Bookings</button>
       </section>
+      <img class="centerpiece-image" src="/images/disco-gardens.png" alt="gazebo at night with lights"></img>
       <section class="manager-booking-lightbox">
         <section class="lightbox-searchUser-form">
           <label for="userSearch" type="text"></label>
@@ -57,7 +56,7 @@
         </section>
       </section>
     </section>
-    <section class="user-page">
+    <section class="user-page hidden">
       <section class="sidebar">
         <p class="user-sidebar-date">1986/08/22
         </p>
@@ -74,7 +73,7 @@
       <button class="user-sidebar-bookings">Book A Room
       </button>
     </section>
-    <section class="booking-page">
+    <section class="booking-page hidden">
       <section class="booking-form-date">
         <label for="booking-date" class="label" tabindex="0">Username:</label>
         <input id="date-input" type="text" name="booking-date" tabindex="0">
@@ -90,5 +89,6 @@
         <button class="form-button">Filter Rooms</button>
       </section>
     </section>
+  </main>
   </body>
 </html>

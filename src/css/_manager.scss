@@ -1,0 +1,56 @@
+.manager-page {
+  display: inline;
+}
+
+
+.sidebar {
+  @include sidebar($pop-color-manager)
+}
+
+.centerpiece-image {
+  width: 55%;
+  margin: 0;
+}
+
+
+.manager-sidebar-text {
+  @include sideBarText(1.5em);
+}
+
+.manager-sidebar-date {
+  @extend .manager-sidebar-text;
+  text-align: left;
+  font-size: 1em;
+  margin-left: 1em;
+}
+.manager-sidebar-rooms {
+  @extend .manager-sidebar-date;
+}
+.manager-sidebar-revenue {
+  @extend .manager-sidebar-date;
+}
+
+.divider {
+  padding: 1em;
+  border-radius: 10px;
+  background-color: $primary-background;
+  border: 3px solid $pop-color-manager;
+  margin: 0 1em 0 1em;
+}
+
+.manager-form-logInButton {
+  @include buttons($pop-color-manager, .5em, white);
+  width: 50%;
+}
+
+.manager-booking-lightbox {
+  background-color: white;
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  left: 40%;
+  border-radius: 5px;
+  border: 3px solid $pop-color-manager;
+  padding: 2em 5em 2em 5em;
+
+}

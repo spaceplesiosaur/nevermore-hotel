@@ -1,0 +1,36 @@
+.welcome-screen {
+  margin: 0 10em 0 10em;
+  background: radial-gradient(#767E81, transparent), url("/images/disco-lounge.png");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-size: cover;
+  text-align: center;
+  background-position: left;
+}
+
+.signIn-header-welcome {
+  @include headers(4em);
+  margin: 1em 0 1em 0
+}
+
+.signIn-form-labelInput {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  label {
+    align-self: flex-start;
+    color: white;
+    font-size: 1.5em;
+    margin: 1em 0 0 0;
+  }
+  input {
+    padding: 1em;
+    border-radius: 5px;
+  }
+}
+
+.signIn-form-logInButton {
+  @include buttons($pop-color-login, .5em, white)
+  width: 50%;
+}
