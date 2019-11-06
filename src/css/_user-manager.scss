@@ -119,7 +119,7 @@
     display: flex;
     flex-direction: row;
     button {
-      @include buttons($fade-color-manager, 1em, $primary-background);
+      @include buttons($pop-color-manager, 1em, white);
       max-height: 1.5em;
       font-size: 1em;
       margin: 0;

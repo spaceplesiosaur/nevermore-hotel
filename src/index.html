@@ -49,7 +49,7 @@
             <ul class="booking-info-list" id="newUserBookings">
               <!-- list added dynamically -->
             </ul>
-            <button class="form-button">Add Booking</button>
+            <button class="form-button" id="openABookingManager">Add Booking</button>
             <p class="booking-info-text" id="newUserTotal">Total Spent:</p>
           </section>
         </section>
@@ -67,27 +67,24 @@
         <div class="divider"></div>
         <p class="booking-info-text" id="userTotalSpent">Total Spent:</p>
         <div class="divider"></div>
-        <button class="form-button">Book A Room</button>
+        <button class="form-button" id="openABookingUser">Book A Room</button>
       </section>
       <!-- <img class="centerpiece-image" src="/images/disco-pool.png" alt="gazebo at night with lights"></img> -->
     </section>
-
-
-
-    <section class="booking-page hidden">
-      <section class="booking-section-header hidden">
+    <section class="booking-page hidden" id="booking-page">
+      <section class="booking-section-header" id="bookingHeader">
         <h2 class="booking-header-prompt">Book a room!</h2>
-        <h3 class="booking-header-userName">Name</h3>
+        <h3 class="booking-header-userName" id="bookerName">Name</h3>
         <section class="booking-label-box">
-          <label for="book-date" class="label" tabindex="0">Date:</label>
+          <label for="book-date" class="label" tabindex="0" id="bookerDate">Date:</label>
           <input id="book-date" type="date" name="book-date" tabindex="0">
         </section>
         <button class="booking-form-findRooms" id="findRoomsButton">Find Rooms!</button>
       </section>
-      <section class="booking-form-roomsAvailable hidden">
-        <p class="manager-sidebar-text">Room Types:</p>
+      <section class="booking-form-roomsAvailable hidden" id="listsOfRooms">
+        <p class="manager-sidebar-text">Pick A Room Type:</p>
         <ul class="booking-info-list" id="roomTypes">
-          <li class="booking-info-listItem">
+          <!-- <li class="booking-info-listItem">
             <input type="checkbox">yes</input>
           </li>
           <li class="booking-info-listItem">
@@ -95,11 +92,11 @@
           </li>
           <li class="booking-info-listItem">
             <input type="checkbox">yes</input>
-          </li>
+          </li> -->
         </ul>
-        <p class="manager-sidebar-text">Room Features:</p>
+        <p class="manager-sidebar-text">Room Features Available:</p>
         <ul class="booking-info-list" id="roomFeatures">
-          <li class="booking-info-listItem">
+          <!-- <li class="booking-info-listItem">
             <input type="checkbox">yes</input>
           </li>
           <li class="booking-info-listItem">
@@ -107,14 +104,14 @@
           </li>
           <li class="booking-info-listItem">
             <input type="checkbox">yes</input>
-          </li>
+          </li> -->
         </ul>
-        <button class="booking-form-findRooms">Filter Rooms</button>
+        <!-- <button class="booking-form-findRooms">Filter Rooms</button> -->
       </section>
-      <section class="open-rooms-list hidden">
-        <p class="manager-sidebar-text">Open rooms!</p>
-        <ul class="booking-info-list" id="roomFeatures">
-          <li class="booking-info-listItem">
+      <section class="open-rooms-list hidden" id="openRoomsList">
+        <p class="manager-sidebar-text">Open rooms! Choose one</p>
+        <ul class="booking-info-list" id="openRoomsNumbers">
+          <!-- <li class="booking-info-listItem">
             <input type="checkbox">yes</input>
           </li>
           <li class="booking-info-listItem">
@@ -122,7 +119,7 @@
           </li>
           <li class="booking-info-listItem">
             <input type="checkbox">yes</input>
-          </li>
+          </li> -->
         </ul>
         <button class="booking-form-findRooms">Book room</button>
       </section>

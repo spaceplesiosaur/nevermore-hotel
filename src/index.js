@@ -17,13 +17,13 @@ import './images/lobby.png';
 import './images/music-lounge.png';
 import './images/goth-pool.png';
 
-console.log('This is the JavaScript entry file - your code begins here.');
 
 let today = new Date();
 let day = today.getDate().toString().padStart(2, '0');
 let month = (today.getMonth() + 1).toString().padStart(2, '0');
 let year = today.getFullYear().toString();
 today = `${year}/${month}/${day}`;
+let newUserId;
 
 console.log(today);
 
@@ -52,29 +52,64 @@ const bookingFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/b
       const users = requiredData[0];
       const rooms = requiredData[1];
       const bookings = requiredData[2];
-    if ($('#username-input').val().includes('manager') ) {
-      $('#managerPage').removeClass('hidden');
-      const manager = new Manager(users, bookings, rooms, $('#username-input').val());
-      hydrateManagerPage(manager, today);
-      $('#managerFormButton').click(openSearchPage);
-      $('#managerSearchButton').click((event) => {
-        $('#newUserInfo').removeClass('hidden');
-        const newUserId = manager.getUserIdByName($('#newUserInput').val());
-        hydrateManagerSearch(manager, today, newUserId);
-      });
-      $('#newUserBookings').click(event => {
-        console.log('EVENT TARGET', event.target);
-        const bookingDelete = {}
-        bookingDelete.id = parseInt(event.target.id);
-        manager.cancelRoom(bookingDelete);
-      })
-    }
-    if ($('#username-input').val().includes('customer') ) {
-      $('#userPage').removeClass('hidden');
-      const user = new User(users, bookings, rooms, $('#username-input').val());
-      hydrateUserPage(user, today);
-    }
-    $('#loginPage').addClass('hidden');
+
+      if ($('#username-input').val().includes('manager')) {
+        $('#managerPage').removeClass('hidden');
+        $('#loginPage').addClass('hidden');
+        const manager = new Manager(users, bookings, rooms, $('#username-input').val());
+        hydrateManagerPage(manager, today);
+
+        $('#managerFormButton').click(openSearchPage);
+
+        $('#managerSearchButton').click((event) => {
+          $('#newUserInfo').removeClass('hidden');
+          newUserId = manager.getUserIdByName($('#newUserInput').val());
+          hydrateManagerSearch(manager, today, newUserId);
+        });
+
+        $('#newUserBookings').click(event => {
+          const bookingDelete = {}
+          bookingDelete.id = parseInt(event.target.id);
+          manager.cancelRoom(bookingDelete);
+        });
+
+        $('#openABookingManager').click((event) => {
+          openBookingPage()
+          hydrateBookingWelcome(manager);
+        });
+
+        $('#findRoomsButton').click((event) => {
+          hydrateOpenRoomLists(manager, $('#bookerDate').val(), 'roomType');
+        })
+      }
+
+      if ($('#username-input').val().includes('customer')) {
+        $('#userPage').removeClass('hidden');
+        $('#loginPage').addClass('hidden');
+        const user = new User(users, bookings, rooms, $('#username-input').val());
+        const booker = new Roombooker(users, bookings, rooms, $('#username-input').val());
+        hydrateUserPage(user, today);
+
+        $('#openABookingUser').click((event) => {
+          openBookingPage();
+          hydrateBookingWelcome(user);
+        });
+
+        $('#findRoomsButton').click((event) => {
+          hydrateOpenRoomLists(booker, $('#bookerDate').val(), 'roomType');
+        })
+
+        $('#listsOfRooms').click(event => {
+          event.preventDefault();
+          console.log('EVENT', event.target);
+          // let roomFilter = event.target.id;
+          $('#openRoomsList').removeClass('hidden');
+          $('#openRoomsNumbers').html(hydrateRoomNumbers(booker, event.target.id, 'roomType', $('#bookerDate').val()));
+
+        })
+
+
+      }
     })
   });
 
@@ -123,6 +158,64 @@ function getUserBookings(userType, id) {
     }
   })
 };
+
+function openBookingPage(event) {
+  console.log('BLAH')
+  $('#booking-page').removeClass('hidden');
+  $('#userPage').addClass('hidden');
+  $('#managerSearchBox').addClass('hidden');
+  $('#managerPage').addClass('hidden');
+  $('#newUserInfo').addClass('hidden');
+};
+
+function chooseUser(userType) {
+  if (userType.userID === null) {
+    console.log('OH HEY ID IS NULL', newUserId)
+    return newUserId;
+    // return userType.getUserIdByName($('#newUserInput').val());
+  } else {
+    return userType.userID;
+  }
+}
+
+function hydrateBookingWelcome(userType) {
+  $('#bookerName').text(`${userType.getUserInfoFromId(chooseUser(userType)).name}`)
+}
+
+function hydrateOpenRoomLists(userType, date, chosenDetail) {
+  $("#listsOfRooms").removeClass('hidden');
+  $("#roomTypes").html(hydrateRoomTypes(userType, date, chosenDetail));
+  $("#roomFeatures").html(hydrateRoomFeatures(userType, date));
+}
+function hydrateRoomTypes(userType, date, chosenDetail) {
+  return userType.showOpenRoomDetails(date, chosenDetail).map((detail) => {
+    return `<li class="booking-info-listItem">
+      <button class="cancel-button" id="${detail}">Choose</button>
+      <p class="booking-info-text"><span class="bold">Roomtype:</span>${detail}</p>
+    </li>`
+  })
+}
+
+function hydrateRoomFeatures(userType, date) {
+  return userType.showOpenRoomFeatures(date).map((detail) => {
+    return `<li class="booking-info-listItem" id="${detail}">
+      <p>${detail}</p>
+    </li>`
+  })
+}
+
+function hydrateRoomNumbers(userType, roomInfo, roomDetail, date) {
+  let roomsList = findOpenRoomsByDate(date);
+  return userType.filterBookingsByType(roomsList, roomInfo, roomDetail).map((room) => {
+    return `<li class="booking-info-listItem">
+      <button class="cancel-button" id="${room.number}>Book!</button>
+      <section class="booking-date-room">
+        <p class="booking-info-text"><span class="bold">Room:</span> ${room.number}</p>
+        <p class="booking-info-text"><span class="bold">Cost:</span> ${room.costPerNight}</p>
+      </section>
+    </li>`
+  })
+}
 
 // $('#newUserBookings').click(event) => {
 //   manager.roomBook.id = event.target.id;
