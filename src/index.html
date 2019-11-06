@@ -1,77 +1,118 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <title>Nevermore Hotel Booking</title>
-  </head>
-  <body>
-    <header>
-      <h1>The Nevermore Hotel</h1>
-      <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-    </header>
-    <section class="welcome-screen">
+
+<head>
+  <title>Nevermore Hotel Booking</title>
+</head>
+
+<body>
+  <header>
+    <!-- <img class="logo-image" src="./images/raven-logo-2.jpg" alt="raven logo"> -->
+    <h1>The Nevermore Hotel</h1>
+  </header>
+  <main>
+    <section class="welcome-screen" id="loginPage">
       <section class="welcome-section-signIn">
         <h2 class="signIn-header-welcome">Welcome!</h2>
-        <section class="signIn-form-username">
+        <section class="signIn-form-labelInput">
           <label for="username" class="label" tabindex="0">Username:</label>
           <input id="username-input" type="text" name="username" tabindex="0">
         </section>
-        <section class="signIn-form-password">
+        <section class="signIn-form-labelInput">
           <label for="password" class="label" tabindex="0">Password:</label>
           <input class="signIn-form-input" id="password-input" type="password" name="password" tabindex="0">
         </section>
         <button class="signIn-form-logInButton" id="logInButton">Log In</button>
       </section>
     </section>
-    <section class="manager-page">
+    <section class="manager-page" id="managerPage">
       <section class="sidebar">
-        <p class="manager-sidebar-date">1986/08/22
-        </p>
-        <section class="manager-sidebar-rooms">
-          <p>Total Rooms Booked</p>
-          <p>% Occupied</p>
-        </section>
-        <p class="manager-sidebar-revenue">
-          $4000.00
-        </p>
-        <button class="manager-sidebar-bookings">Bookings
-        </button>
+        <p class="manager-sidebar-text">Hello, Manager!</p>
+        <div class="divider"></div>
+        <p class="manager-sidebar-date" id="managerDate">Date: 1986/08/22</p>
+        <p class="manager-sidebar-rooms" id="managerTotalRooms">Total Rooms Booked:</p>
+        <p class="manager-sidebar-rooms" id="managerPecentOcc">% Occupied:</p>
+        <p class="manager-sidebar-revenue" id="managerTotalRevenue">Today's revenue: $4000.00</p>
+        <div class="divider"></div>
+        <button class="manager-form-logInButton" id="managerFormButton">Bookings</button>
       </section>
-      <section class="manager-booking-lightbox">
+      <img class="centerpiece-image hidden" id="managerCenterpiece" src="/images/disco-gardens.png" alt="gazebo at night with lights"></img>
+      <section class="manager-booking-lightbox hidden" id="managerSearchBox">
         <section class="lightbox-searchUser-form">
-          <label for="userSearch" type="text"></label>
           <section class="button-label-box">
-          <input class="signIn-form-input" name="userSearch"></input>
-          <button class="form-button">Search</button>
+            <label for="userSearch">Search by user name</label>
+            <input class="signIn-form-input" id="newUserInput" name="userSearch" type="text"></input>
+            <button class="form-button" id="managerSearchButton">Search</button>
+          </section>
+          <section class="user-booking-info hidden" id="newUserInfo">
+            <div class="divider"></div>
+            <p class="booking-info-text" id="newUserName">User Name</p>
+            <ul class="booking-info-list" id="newUserBookings">
+              <!-- <li class="booking-info-listItem">
+                <button class="cancel-button">Cancel</button>
+                <p class="booking-info-text">Booking List Item</p>
+              </li> -->
+            </ul>
+            <button class="form-button">Add Booking</button>
+            <p class="booking-info-text" id="newUserTotal">Total Spent:</p>
+          </section>
         </section>
-        <section class=user-booking-info>
-          <p>User Name</p>
+      </section>
+    </section>
+    <section class="user-page hidden" id="userPage">
+      <section class="sidebar">
+        <p class="manager-sidebar-text" id="userGreet">Hello, User!</p>
+        <p class="manager-sidebar-date" id="userDate">Date: 1986/08/22</p>
+        <div class="divider"></div>
+        <p class="manager-sidebar-date">Your bookings:</p>
+        <ul class="booking-user-list" id="userBookings">
+          <!-- list added dynamically -->
+        </ul>
+        <div class="divider"></div>
+        <p class="booking-info-text" id="userTotalSpent">Total Spent:</p>
+        <div class="divider"></div>
+        <button class="form-button">Book A Room</button>
+      </section>
+      <img class="centerpiece-image" src="/images/disco-pool.png" alt="gazebo at night with lights"></img>
+    </section>
+
+
+    <section class="booking-page hidden">
+      <section class="column1-picture">
+        <img class="side-image" src="/images/disco-pool.png" alt="gazebo at night with lights"></img>
+      </section>
+      <section class="column2-booking-form">
+        <section class="booking-label-box">
+          <label for="book-date" class="label" tabindex="0">Date:</label>
+          <input id="book-date" type="date" name="book-date" tabindex="0">
+        </section>
+        <section class="booking-label-box">
+          <label for="book-user" class="label" tabindex="0">Username:</label>
+          <input id="book-user" type="text" name="book-user" tabindex="0">
+          <button class="form-button">Find Rooms</button>
+        </section>
+        <section class="booking-form-roomList">
+          <p>I want rooms with</p>
           <ul>
             <li>
-              <button class="cancel-button">Cancel</button>
-              <p>Booking List Item</p>
+              <input type="checkbox">yes</input>
+            </li>
+            <li>
+              <input type="checkbox">yes</input>
+            </li>
+            <li>
+              <input type="checkbox">yes</input>
             </li>
           </ul>
-          <button class="form-button">Add Booking</button>
-          <p>Total Spent:</p>
-        </section>
+          <button class="form-button">Filter Rooms</button>
         </section>
       </section>
-    </section>
-    <section class="booking-page">
-      <section class="booking-form-date">
-        <label for="booking-date" class="label" tabindex="0">Username:</label>
-        <input id="date-input" type="text" name="booking-date" tabindex="0">
-        <button class="form-button">Find Rooms</button>
-      </section>
-      <section class="booking-form-roomList">
-        <p>I want rooms with</p>
-        <ul>
-          <li>
-            
-          </li>
-        </ul>
 
-      </section>
+    <section class="column3-picture">
+      <img class="side-image" src="/images/disco-pool.png" alt="gazebo at night with lights"></img>
     </section>
-  </body>
+  </section>
+  </main>
+</body>
+
 </html>

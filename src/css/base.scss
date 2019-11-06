@@ -1,6 +1,33 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+@import '/_variables.scss';
+@import '/_login.scss';
+@import '/_user.scss';
+@import '/_manager.scss';
+@import '/_booking.scss';
+
+
 
 body {
   background-color: $primary-background;
+}
+
+main {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+header {
+  @include headers(3em);
+}
+
+.logo-image {
+  background-color: hsla(0, 0, 0, 0);
+  height: 3em;
+  width: 3em;
+}
+
+.inactive {
+  display: hidden;
 }

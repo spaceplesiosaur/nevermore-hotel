@@ -1,0 +1,137 @@
+.manager-page {
+  // background: url("/images/disco-gardens.png");
+}
+
+
+.sidebar {
+  @include sidebar($pop-color-manager)
+}
+
+.centerpiece-image {
+  width: 55%;
+  margin: 0;
+}
+
+
+.manager-sidebar-text {
+  @include sideBarText(1.5em);
+}
+
+.manager-sidebar-date {
+  @extend .manager-sidebar-text;
+  text-align: left;
+  font-size: 1em;
+  margin-left: 1em;
+}
+.manager-sidebar-rooms {
+  @extend .manager-sidebar-date;
+}
+.manager-sidebar-revenue {
+  @extend .manager-sidebar-date;
+}
+
+.booking-info-text {
+  @include sideBarText(1.5em);
+  margin: 1em;
+  .bold {
+    font-weight: bolder;
+  }
+}
+
+.divider {
+  padding: .5em;
+  border-radius: 10px;
+  background-color: $primary-background;
+  border: 3px solid $pop-color-manager;
+  margin: 0 1em 0 1em;
+}
+
+.manager-form-logInButton {
+  @include buttons($pop-color-manager, .5em, white);
+  width: 50%;
+}
+
+.centerpiece-image {
+  position: absolute;
+  z-index: 999;
+  top: 33%;
+  left: 20%;
+  width: 60%;
+  border-radius: 5px;
+  padding: 1em 4em 2em 4em;
+}
+.manager-booking-lightbox {
+  @extend .centerpiece-image;
+  background-color: white;
+  top: 35%;
+  left: 30%;
+  width: 40%;
+  border: 3px solid $pop-color-manager;
+}
+
+.button-label-box {
+  @include labelInputs();
+
+  label {
+    color: $primary-background;
+    align-self: center;
+    margin-bottom: .6em;
+  }
+  input {
+    width: 75%;
+    align-self: center;
+  }
+  button {
+    @include buttons($pop-color-manager, .5em, white);
+    margin: 1em 0 1em 0;
+    width: 25%;
+    align-self: center;
+  }
+}
+
+.form-button {
+  @include buttons($pop-color-manager, .5em, white);
+   margin: 1em 0 1em 0;
+   width: 50%;
+   align-self: center;
+}
+.booking-info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  background-color: $fade-color-manager;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  max-height: 200px;
+  padding-inline-start: 5px;
+}
+
+.booking-user-list {
+  @extend .booking-info-list;
+  .booking-info-listItem {
+    display: flex;
+    flex-direction: row;
+    button {
+      @include buttons($fade-color-manager, 1em, $primary-background);
+      max-height: 1.5em;
+      font-size: 1em;
+      margin: 0;
+    }
+    p {
+      font-size: 1em;
+    }
+  }
+}
+
+.booking-info-listItem {
+  display: flex;
+  flex-direction: row;
+  button {
+    @include buttons($fade-color-manager, .2em, $primary-background);
+    margin: .5em .5em .5em 0;
+  }
+  .booking-info-text {
+    @include sideBarText(1.5em);
+    margin: 0 0 0 1em;
+  }
+}

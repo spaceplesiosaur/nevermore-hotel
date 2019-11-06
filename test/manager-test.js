@@ -15,7 +15,7 @@ describe('Manager', function() {
 
   beforeEach(() => {
 
-  manager1 = new Manager(users, bookings, 'manager');
+  manager1 = new Manager(users, bookings, rooms, 'manager');
 
 });
 
@@ -141,6 +141,9 @@ describe('Manager', function() {
       }];
     });
     expect(manager1.getPercentOccupiedByDate('2019/11/06', rooms)).to.eql(25)
+  })
+  it('should return a user id from a name', function() {
+    expect(manager1.getUserIdByName('Anastasia Beaverhousen')).to.equal(1);
   })
 
 });

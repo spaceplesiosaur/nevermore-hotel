@@ -1,0 +1,31 @@
+.booking-page {
+  // display: flex;
+  // flex-direction: row;
+  // display: grid;
+  // grid-template-columns: 33 | 33 | 33;
+}
+
+.side-image {
+  width: 30%;
+}
+
+.booking-label-box {
+  @include labelInputs();
+  margin-left: 6em;
+  margin-right: 6em;
+  label {
+    color: white;
+    align-self: left;
+    margin-bottom: .6em;
+  }
+  input {
+    // width: 25%;
+    align-self: center;
+  }
+  button {
+    @include buttons($pop-color-manager, .5em, white);
+    margin: 1em 0 1em 0;
+    width: 25%;
+    align-self: center;
+  }
+}
