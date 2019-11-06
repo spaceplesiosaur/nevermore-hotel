@@ -12,7 +12,10 @@ import './images/raven-logo-2.jpg';
 import './images/pngtree-feather.png';
 import './images/disco-lounge.png';
 import './images/disco-gardens.png';
-import './images/disco-pool.png'
+import './images/disco-pool.png';
+import './images/lobby.png';
+import './images/music-lounge.png';
+import './images/goth-pool.png';
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -84,20 +87,14 @@ function hydrateManagerPage(manager, today) {
 
 function openSearchPage(event) {
   $('#managerSearchBox').removeClass('hidden');
-  $('#managerCenterpiece').addClass('hidden');
+  // $('#managerCenterpiece').addClass('hidden');
 };
-
-// function openNewUserInfo(event) {  
-//   $('#newUserInfo').removeClass('hidden');
-//   const newUserId = manager.getUserIdByName($('#newUserInput').val());
-//   hydrateManagerSearch(manager, today, newUserId);
-// }
 
 function hydrateManagerSearch(manager, today, newUserId) {
   $('#newUserName').text($('#newUserInput').val());
   $('#newUserTotal').text(`$${manager.getRevenueById(newUserId).toFixed(2)}`);
   $('#newUserBookings').html(getUserBookings(manager, newUserId))
-}
+};
 
 function hydrateUserPage(user, today) {
   $('#userGreet').text(`Hello, ${user.getUserInfoFromId(user.userID).name}!`);

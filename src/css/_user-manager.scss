@@ -1,7 +1,14 @@
 .manager-page {
-  // background: url("/images/disco-gardens.png");
+  background: radial-gradient(#767E81, transparent), url("/images/disco-gardens.png");
+  display: flex;
+  background-position: top;
+  background-size: cover;
 }
 
+.user-page {
+  @extend .manager-page;
+  background: url("/images/disco-pool.png");
+}
 
 .sidebar {
   @include sidebar($pop-color-manager)
@@ -51,22 +58,22 @@
   width: 50%;
 }
 
-.centerpiece-image {
-  position: absolute;
-  z-index: 999;
-  top: 33%;
-  left: 20%;
-  width: 60%;
-  border-radius: 5px;
-  padding: 1em 4em 2em 4em;
-}
+// .centerpiece-image {
+//   position: absolute;
+//   z-index: 999;
+//   top: 33%;
+//   left: 20%;
+//   width: 60%;
+//   border-radius: 5px;
+//   padding: 1em 4em 2em 4em;
+// }
 .manager-booking-lightbox {
-  @extend .centerpiece-image;
   background-color: white;
   top: 35%;
   left: 30%;
   width: 40%;
   border: 3px solid $pop-color-manager;
+  margin: 3em 1em 3em 10em;
 }
 
 .button-label-box {

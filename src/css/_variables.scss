@@ -2,6 +2,7 @@ $primary-background: #292929;
 $pop-color-login: #C84865;
 $pop-color-manager: #8F2AFB;
 $fade-color-manager: #CBF3D3;
+$pop-color-booking: #4273A3;
 
 
 
@@ -30,7 +31,7 @@ $fade-color-manager: #CBF3D3;
   width: 17%;
   border-radius: 5px;
   border: 3px solid $border-color;
-  margin: 0 0 0 1em;
+  margin: 3em 1em 3em 1em;
 }
 @mixin sideBarText($font-size) {
   color: $primary-background;
