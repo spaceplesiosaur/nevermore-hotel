@@ -92,21 +92,6 @@ function hydrateUserPage(user, today) {
   $('#userTotalSpent').text(`$${user.getRevenueById(user.userID).toFixed(2)}`);
 };
 
-// function getUserBookings(user, id) {
-//   console.log('BOOKINGS', user.getBookingsById(id))
-//   console.log('SORTED BOOKINGS', user.getBookingsById(id).sort(
-//       (a, b) => {return new Date(b.date) - new Date(a.date)}
-//     ))
-//   return user.getBookingsById(id).sort(
-//     (a, b) => new Date(b.date) - new Date(a.date)
-//   ).map(booking => {
-//     return `<li class="booking-info-listItem">
-//       <p class="booking-info-text">Date: ${booking.date}</p>
-//       <p class="booking-info-text">Room: ${booking.roomNumber}</p>
-//     </li>`
-//   })
-// };
-
 function getUserBookings(userType, id) {
   return userType.getBookingsById(id).sort(
     (a, b) => {return new Date(b.date) - new Date(a.date)}
