@@ -3,7 +3,6 @@ import User from "./User";
 class Roombooker extends User {
   constructor(userData, bookings, roomList, username) {
     super(userData, bookings, roomList, username)
-    this.roomBook = {};
   }
   findBookingsByDate(date) {
     return this.bookings.filter(booking => {
@@ -60,16 +59,15 @@ class Roombooker extends User {
       .then(data => console.log(data))
       .catch(error => console.log('There was an error submitting your booking', error))
   }
-  cancelRoom() {
+  cancelRoom(bookingToDelete) {
+    console.log(bookingToDelete);
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
       method: 'DELETE',
       headers: {
         'Content-Type': "application/json"
       },
-      body: {id: this.roomBook.id}
-    }).then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.log('There was an error deleting your booking', error))
+      body: JSON.stringify(bookingToDelete)
+    }).catch(error => console.log('There was an error deleting your booking', error))
   }
 }
 

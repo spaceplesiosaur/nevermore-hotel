@@ -53,15 +53,18 @@ const bookingFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/b
       $('#managerPage').removeClass('hidden');
       const manager = new Manager(users, bookings, rooms, $('#username-input').val());
       hydrateManagerPage(manager, today);
-      $('#managerFormButton').click((event) => {
-        $('#managerSearchBox').removeClass('hidden');
-        $('#managerCenterpiece').addClass('hidden');
-      });
+      $('#managerFormButton').click(openSearchPage);
       $('#managerSearchButton').click((event) => {
         $('#newUserInfo').removeClass('hidden');
         const newUserId = manager.getUserIdByName($('#newUserInput').val());
         hydrateManagerSearch(manager, today, newUserId);
       });
+      $('#newUserBookings').click(event => {
+        console.log('EVENT TARGET', event.target);
+        const bookingDelete = {}
+        bookingDelete.id = parseInt(event.target.id);
+        manager.cancelRoom(bookingDelete);
+      })
     }
     if ($('#username-input').val().includes('customer') ) {
       $('#userPage').removeClass('hidden');
@@ -78,6 +81,17 @@ function hydrateManagerPage(manager, today) {
   $('#managerPecentOcc').text(`Percent Occupied: ${manager.getPercentOccupiedByDate(today).toFixed()}%`);
   $('#managerTotalRevenue').text(`Total Revenue: $${manager.getTotalRevenueByDate(today)}`);
 };
+
+function openSearchPage(event) {
+  $('#managerSearchBox').removeClass('hidden');
+  $('#managerCenterpiece').addClass('hidden');
+};
+
+// function openNewUserInfo(event) {  
+//   $('#newUserInfo').removeClass('hidden');
+//   const newUserId = manager.getUserIdByName($('#newUserInput').val());
+//   hydrateManagerSearch(manager, today, newUserId);
+// }
 
 function hydrateManagerSearch(manager, today, newUserId) {
   $('#newUserName').text($('#newUserInput').val());
@@ -98,7 +112,7 @@ function getUserBookings(userType, id) {
   ).map(booking => {
     if (userType.userID === null && new Date(booking.date) >= new Date(today)) {
       return `<li class="booking-info-listItem">
-        <button class="cancel-button">Cancel</button>
+        <button class="cancel-button" id="${booking.id}">Cancel</button>
         <section class="booking-date-room">
           <p class="booking-info-text"><span class="bold">Date:</span> ${booking.date}</p>
           <p class="booking-info-text"><span class="bold">Room:</span> ${booking.roomNumber}</p>
@@ -113,7 +127,10 @@ function getUserBookings(userType, id) {
   })
 };
 
-
+// $('#newUserBookings').click(event) => {
+//   manager.roomBook.id = event.target.id;
+//   manager.cancelRoom();
+// }
 
 //
 //
