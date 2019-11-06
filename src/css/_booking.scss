@@ -1,31 +1,41 @@
 .booking-page {
-  // display: flex;
-  // flex-direction: row;
-  // display: grid;
-  // grid-template-columns: 33 | 33 | 33;
+@extend .welcome-screen;
+background: radial-gradient(#767E81, transparent), url("/images/goth-pool.png");
 }
 
-.side-image {
-  width: 30%;
+.booking-header-prompt {
+  @include headers(4em);
+  margin: 1em 0 1em 0
 }
+
+.booking-header-userName {
+  @include headers(3em);
+  margin: 1em 0 1em 0
+}
+
+
 
 .booking-label-box {
   @include labelInputs();
-  margin-left: 6em;
-  margin-right: 6em;
-  label {
-    color: white;
-    align-self: left;
-    margin-bottom: .6em;
-  }
   input {
-    // width: 25%;
+    padding: 4em;
+    border-radius: 5px;
     align-self: center;
+    width: 100%;
+    height: 3em;
   }
-  button {
-    @include buttons($pop-color-manager, .5em, white);
-    margin: 1em 0 1em 0;
-    width: 25%;
-    align-self: center;
-  }
+}
+
+.booking-form-findRooms {
+  @include buttons($pop-color-booking, .5em, white)
+  width: 50%;
+}
+
+.booking-form-roomsAvailable {
+  @extend .manager-booking-lightbox;
+  margin: 10em;
+}
+
+.open-rooms-list {
+  @extend .booking-form-roomsAvailable;
 }
