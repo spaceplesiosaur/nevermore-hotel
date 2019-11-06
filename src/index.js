@@ -99,8 +99,8 @@ const bookingFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/b
           hydrateOpenRoomLists(booker, $('#bookerDate').val(), 'roomType');
         })
 
-        $('#listsOfRooms').click(event => {
-          event.preventDefault();
+        $('#roomTypes').click(event => {
+          // event.preventDefault();
           console.log('EVENT', event.target);
           // let roomFilter = event.target.id;
           $('#openRoomsList').removeClass('hidden');
@@ -160,7 +160,6 @@ function getUserBookings(userType, id) {
 };
 
 function openBookingPage(event) {
-  console.log('BLAH')
   $('#booking-page').removeClass('hidden');
   $('#userPage').addClass('hidden');
   $('#managerSearchBox').addClass('hidden');
@@ -170,9 +169,7 @@ function openBookingPage(event) {
 
 function chooseUser(userType) {
   if (userType.userID === null) {
-    console.log('OH HEY ID IS NULL', newUserId)
     return newUserId;
-    // return userType.getUserIdByName($('#newUserInput').val());
   } else {
     return userType.userID;
   }
