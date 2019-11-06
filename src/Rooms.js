@@ -47,14 +47,14 @@ class Roombooker extends User {
       return roomItem[roomDetail] === roomInfo;
     })
   }
-  bookRoom() {
+  bookRoom(bookingToPost) {
     console.log("booking", this.roomBook);
     return fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
       method: 'POST',
       headers: {
         'Content-Type': "application/json"
       },
-      body: JSON.stringify(this.roomBook)
+      body: JSON.stringify(bookingToPost)
     }).then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.log('There was an error submitting your booking', error))

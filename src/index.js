@@ -53,7 +53,7 @@ const bookingFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/b
       const rooms = requiredData[1];
       const bookings = requiredData[2];
 
-      if ($('#username-input').val().includes('manager')) {
+      if ($('#username-input').val().includes('manager') && $('#password-input').val() === 'overlook2019') {
         $('#managerPage').removeClass('hidden');
         $('#loginPage').addClass('hidden');
         const manager = new Manager(users, bookings, rooms, $('#username-input').val());
@@ -80,10 +80,24 @@ const bookingFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/b
 
         $('#findRoomsButton').click((event) => {
           hydrateOpenRoomLists(manager, $('#bookerDate').val(), 'roomType');
-        })
-      }
+        });
 
-      if ($('#username-input').val().includes('customer')) {
+        $('#roomTypes').click(event => {
+          $('#openRoomsList').removeClass('hidden');
+          $('#openRoomsNumbers').html(hydrateRoomNumbers(manager, event.target.id, 'roomType', $('#book-date').val()));
+        });
+        $('#openRoomsNumbers').click(event => {
+          console.log($('#bookerDate').val())
+          const postInfo = {};
+          postInfo.userID = parseInt(newUserId);
+          postInfo.date = ($('#book-date').val()).split('-').join('/');
+          postInfo.roomNumber = parseInt(event.target.id);
+          manager.bookRoom(postInfo);
+        });
+}
+
+
+      if ($('#username-input').val().includes('customer') && $('#password-input').val() === 'overlook2019') {
         $('#userPage').removeClass('hidden');
         $('#loginPage').addClass('hidden');
         const user = new User(users, bookings, rooms, $('#username-input').val());
@@ -97,21 +111,32 @@ const bookingFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/b
 
         $('#findRoomsButton').click((event) => {
           hydrateOpenRoomLists(booker, $('#bookerDate').val(), 'roomType');
-        })
+        });
 
         $('#roomTypes').click(event => {
-          // event.preventDefault();
           console.log('EVENT', event.target);
-          // let roomFilter = event.target.id;
           $('#openRoomsList').removeClass('hidden');
-          $('#openRoomsNumbers').html(hydrateRoomNumbers(booker, event.target.id, 'roomType', $('#bookerDate').val()));
-
+          $('#openRoomsNumbers').html(hydrateRoomNumbers(booker, event.target.id, 'roomType', $('#book-date').val()));
         })
 
-
+        $('#openRoomsNumbers').click(event => {
+          console.log($('#bookerDate').val())
+          const postInfo = {};
+          postInfo.userID = parseInt(user.userID);
+          postInfo.date = ($('#book-date').val()).split('-').join('/');
+          postInfo.roomNumber = parseInt(event.target.id);
+          booker.bookRoom(postInfo);
+        });
       }
+
+
+
+
     })
-  });
+  })
+  //       })
+  //   })
+  // });
 
 function hydrateManagerPage(manager, today) {
   $('#managerDate').text(`Date: ${today}`);
@@ -122,7 +147,6 @@ function hydrateManagerPage(manager, today) {
 
 function openSearchPage(event) {
   $('#managerSearchBox').removeClass('hidden');
-  // $('#managerCenterpiece').addClass('hidden');
 };
 
 function hydrateManagerSearch(manager, today, newUserId) {
@@ -202,10 +226,10 @@ function hydrateRoomFeatures(userType, date) {
 }
 
 function hydrateRoomNumbers(userType, roomInfo, roomDetail, date) {
-  let roomsList = findOpenRoomsByDate(date);
+  let roomsList = userType.findOpenRoomsByDate(date);
   return userType.filterBookingsByType(roomsList, roomInfo, roomDetail).map((room) => {
     return `<li class="booking-info-listItem">
-      <button class="cancel-button" id="${room.number}>Book!</button>
+      <button class="cancel-button" id="${room.number}">Book!</button>
       <section class="booking-date-room">
         <p class="booking-info-text"><span class="bold">Room:</span> ${room.number}</p>
         <p class="booking-info-text"><span class="bold">Cost:</span> ${room.costPerNight}</p>
@@ -214,14 +238,7 @@ function hydrateRoomNumbers(userType, roomInfo, roomDetail, date) {
   })
 }
 
-// $('#newUserBookings').click(event) => {
-//   manager.roomBook.id = event.target.id;
-//   manager.cancelRoom();
-// }
 
-//
-//
-//
 // const bookingItem = {
 //   userID: 20,
 //   date: "2019/11/07",
