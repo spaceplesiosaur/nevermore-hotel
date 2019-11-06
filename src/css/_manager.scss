@@ -33,6 +33,9 @@
 .booking-info-text {
   @include sideBarText(1.5em);
   margin: 1em;
+  .bold {
+    font-weight: bolder;
+  }
 }
 
 .divider {
@@ -96,8 +99,10 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  background-color: grey;
-  overflow: scroll;
+  background-color: $fade-color-manager;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  max-height: 200px;
   padding-inline-start: 5px;
 }
 

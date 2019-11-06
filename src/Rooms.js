@@ -50,7 +50,7 @@ class Roombooker extends User {
   }
   bookRoom() {
     console.log("booking", this.roomBook);
-    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
+    return fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
       method: 'POST',
       headers: {
         'Content-Type': "application/json"

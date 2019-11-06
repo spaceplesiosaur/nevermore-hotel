@@ -11,9 +11,11 @@ class User {
     });
   }
   getBookingsById(id) {
-    return this.bookings.filter(booking => {
+    const ret = this.bookings.filter(booking => {
       return booking.userID === id;
     });
+    console.log('RET', id);
+    return ret;
   }
   getRevenueById(id) {
     let roomList = this.roomList;

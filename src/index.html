@@ -25,54 +25,51 @@
         <button class="signIn-form-logInButton" id="logInButton">Log In</button>
       </section>
     </section>
-    <section class="manager-page hidden" id="managerPage">
+    <section class="manager-page" id="managerPage">
       <section class="sidebar">
         <p class="manager-sidebar-text">Hello, Manager!</p>
         <div class="divider"></div>
-        <p class="manager-sidebar-date">Date: 1986/08/22</p>
-        <p class="manager-sidebar-rooms">Total Rooms Booked:</p>
-        <p class="manager-sidebar-rooms">% Occupied:</p>
-        <p class="manager-sidebar-revenue">Today's revenue: $4000.00</p>
+        <p class="manager-sidebar-date" id="managerDate">Date: 1986/08/22</p>
+        <p class="manager-sidebar-rooms" id="managerTotalRooms">Total Rooms Booked:</p>
+        <p class="manager-sidebar-rooms" id="managerPecentOcc">% Occupied:</p>
+        <p class="manager-sidebar-revenue" id="managerTotalRevenue">Today's revenue: $4000.00</p>
         <div class="divider"></div>
-        <button class="manager-form-logInButton">Bookings</button>
+        <button class="manager-form-logInButton" id="managerFormButton">Bookings</button>
       </section>
-      <img class="centerpiece-image hidden" src="/images/disco-gardens.png" alt="gazebo at night with lights"></img>
-      <section class="manager-booking-lightbox">
+      <img class="centerpiece-image hidden" id="managerCenterpiece" src="/images/disco-gardens.png" alt="gazebo at night with lights"></img>
+      <section class="manager-booking-lightbox hidden" id="managerSearchBox">
         <section class="lightbox-searchUser-form">
           <section class="button-label-box">
-            <label for="userSearch">Search by user id</label>
-            <input class="signIn-form-input" name="userSearch" type="text"></input>
-            <button class="form-button">Search</button>
+            <label for="userSearch">Search by user name</label>
+            <input class="signIn-form-input" id="newUserInput" name="userSearch" type="text"></input>
+            <button class="form-button" id="managerSearchButton">Search</button>
           </section>
-          <section class="user-booking-info">
+          <section class="user-booking-info hidden" id="newUserInfo">
             <div class="divider"></div>
-            <p class="booking-info-text">User Name</p>
-            <ul class="booking-info-list">
-              <li class="booking-info-listItem">
+            <p class="booking-info-text" id="newUserName">User Name</p>
+            <ul class="booking-info-list" id="newUserBookings">
+              <!-- <li class="booking-info-listItem">
                 <button class="cancel-button">Cancel</button>
                 <p class="booking-info-text">Booking List Item</p>
-              </li>
+              </li> -->
             </ul>
             <button class="form-button">Add Booking</button>
-            <p class="booking-info-text">Total Spent:</p>
+            <p class="booking-info-text" id="newUserTotal">Total Spent:</p>
           </section>
         </section>
       </section>
     </section>
     <section class="user-page hidden" id="userPage">
       <section class="sidebar">
-        <p class="manager-sidebar-text">Hello, User!</p>
-        <p class="manager-sidebar-date">Date: 1986/08/22</p>
+        <p class="manager-sidebar-text" id="userGreet">Hello, User!</p>
+        <p class="manager-sidebar-date" id="userDate">Date: 1986/08/22</p>
         <div class="divider"></div>
         <p class="manager-sidebar-date">Your bookings:</p>
-        <ul class="booking-user-list">
-          <li class="booking-info-listItem">
-            <button class="cancel-button">Cancel</button>
-            <p class="booking-info-text">Booking List Item</p>
-          </li>
+        <ul class="booking-user-list" id="userBookings">
+          <!-- list added dynamically -->
         </ul>
         <div class="divider"></div>
-        <p class="booking-info-text">Total Spent:</p>
+        <p class="booking-info-text" id="userTotalSpent">Total Spent:</p>
         <div class="divider"></div>
         <button class="form-button">Book A Room</button>
       </section>

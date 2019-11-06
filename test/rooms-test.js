@@ -168,26 +168,14 @@ describe('Rooms', function() {
   it('should show available room features', function() {
     expect(rooms1.showOpenRoomFeatures('2019/11/22')).to.eql(['bidet', 'inexpensive', 'haunted']);
   });
-  // it('should post a new room booking', function() {
-  //   rooms1.roomBook = {
-  //     userID: 20,
-  //     date: "2019/11/08",
-  //     roomNumber: 13,
-  //   };
-  //   chai.spy.on(global, 'fetch', () => {
-  //     return new Promise((resolve, reject) => {
-  //       resolve({message: 'booking has been posted'})
-  //     })
-  //   });
-  //   expect(rooms1.bookRoom()).to.have.been.called(1);
-  // });
-  // it('should delete a room booking', function() {
-  //   rooms1.roomBook = {
-  //     userID: 20,
-  //     date: "2019/11/08",
-  //     roomNumber: 13,
-  //     id: Date.now()
-  //   };
-  //   expect(rooms1.cancelRoom()).to.have.been.called(1);
-  // });
+  it('should post a new room booking and delete a booking', function() {
+    let fakeFetch = chai.spy.on(global, 'fetch', () => {
+      return new Promise((resolve, reject) => {
+        resolve({message: 'booking has been posted'})
+      })
+    });
+    rooms1.bookRoom();
+    rooms1.cancelRoom();
+    expect(fakeFetch).to.have.been.called(2);
+  });
 });
